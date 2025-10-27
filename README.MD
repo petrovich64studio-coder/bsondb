@@ -2,14 +2,23 @@
 
 A simple but powerful NoSQL database with BSON files, encryption, and file storage capabilities. ⚡
 ✨ **Features**
+
     📁 BSON File Storage: Efficient binary JSON storage
+
     🔐 Encryption: AES-256-GCM encryption for data security
+
     📎 File Storage: Store files directly in the database
+
     📊 Indexing: Single and multi-field indexing with Redis support
+    
     🔄 Mongoose-like API: Familiar interface for MongoDB users
+        
     ⚡ Multi-threading: Worker thread support for better performance
+    
     🏠 Localhost Only: Secure by default, only accessible from localhost
+        
     ✅ Schema Validation: Data validation with custom schemas
+        
     🎣 Hooks: Pre and post hooks for data manipulation
 
 🚀 **Installation**
