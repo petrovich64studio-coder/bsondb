@@ -260,15 +260,23 @@ When running as server, @alertino/bsondb provides REST API:
     DELETE /api/db/:dbName/collection/:collectionName/delete - Delete documents ❌
 ```
 🔒 *Security*
+
     🔐 Data is encrypted using AES-256-GCM
+
     🏠 Server only binds to localhost by default
+
     📊 File-based and Redis-based indexing options
+
     ✅ Schema validation prevents invalid data
 
 🚀 *Performance Tips*
+
     📊 Use indexes for frequently queried fields
+    
     ⚡ Use multi-threading for heavy workloads
+        
     💾 Store large files using file storage API
+    
     🛑 Use Redis for better index performance
 
 📄 **License - MIT**
