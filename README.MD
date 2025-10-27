@@ -1,6 +1,7 @@
 # @alertino/bsondb 🗄️
 
 A simple but powerful NoSQL database with BSON files, encryption, and file storage capabilities. ⚡
+
 ✨ **Features**
 
     📁 BSON File Storage: Efficient binary JSON storage
