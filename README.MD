@@ -1,4 +1,4 @@
-# @alertino/bsondb 🗄️
+# @axmat/bsondb 🗄️
 
 A simple but powerful NoSQL database with BSON files, encryption, and file storage capabilities. ⚡
 
@@ -26,14 +26,14 @@ A simple but powerful NoSQL database with BSON files, encryption, and file stora
 *As NPM Package*
 
 ```bash
-npm install @alertino/bsondb
+npm install @axmat/bsondb
 ```
 
 
 *Global Installation (for CLI)*
 
 ```bash
-npm install -g @alertino/bsondb
+npm install -g @axmat/bsondb
 ```
 
 
@@ -41,11 +41,11 @@ npm install -g @alertino/bsondb
 *Using as Module*
 
 ```javascript
-const @alertino/bsondb = require('@alertino/bsondb');
+const @axmat/bsondb = require('@axmat/bsondb');
 
 async function example() {
   // Connect to database (creates if doesn't exist)
-  const db = await @alertino/bsondb.connect('mydatabase', {
+  const db = await @axmat/bsondb.connect('mydatabase', {
     dataPath: './data',
     encryptionKey: 'my-secret-key',
     redisUrl: 'redis://localhost:6379'
@@ -71,7 +71,7 @@ example();
 Using Models
 javascript
 
-const @alertino/bsondb = require('@alertino/bsondb');
+const @axmat/bsondb = require('@axmat/bsondb');
 
 // Define schema
 const userSchema = {
@@ -81,10 +81,10 @@ const userSchema = {
 };
 
 // Create model
-const User = @alertino/bsondb.model('User', userSchema);
+const User = @axmat/bsondb.model('User', userSchema);
 
 async function modelExample() {
-  const db = await @alertino/bsondb.connect('mydatabase');
+  const db = await @axmat/bsondb.connect('mydatabase');
   const usersCollection = await db.createCollection('users');
   
   User.setCollection(usersCollection);
@@ -112,21 +112,21 @@ async function modelExample() {
 *Start server with custom options*
 
 ```bash
-@alertino/bsondb -port 6458 -thread 4 -data ./mydata -encryption-key my-key
+@axmat/bsondb -port 6458 -thread 4 -data ./mydata -encryption-key my-key
 ```
 
 
 **Default usage**
 
 ```bash
-@alertino/bsondb
+@axmat/bsondb
 ```
 
 
 📚 *API Reference*
 🗃️ *Database Methods*
 
-```methods @alertino/bsondb
+```methods @axmat/bsondb
     connect(dbName, options) - Connect to database 🔌
     disconnect(dbName) - Disconnect from database 🔋
     createCollection(name, options) - Create new collection 🆕
@@ -136,7 +136,7 @@ async function modelExample() {
 ```
 📄 *Collection Methods*
 
-```methods @alertino/bsondb
+```methods @axmat/bsondb
     insertOne(document) - Insert single document ➕
     insertMany(documents) - Insert multiple documents 🚀
     find(query, options) - Find documents 🔍
@@ -152,7 +152,7 @@ async function modelExample() {
 
 🔍 *Query Operators*
 
-```@alertino/bsondb operators
+```@axmat/bsondb operators
     $eq - Equal ✅
     $ne - Not equal ❌
     $gt - Greater than ⬆️
@@ -167,7 +167,7 @@ async function modelExample() {
 ```
 ✏️ *Update Operators*
 
-```@alertino/bsondb operators
+```@axmat/bsondb operators
     $set - Set field values 🎯
     $unset - Remove fields 🗑️
     $inc - Increment field values ➕
@@ -175,7 +175,7 @@ async function modelExample() {
 ```
 🎭 *Model Methods*
 
-```@alertino/bsondb model methods
+```@axmat/bsondb model methods
     create(data) - Create document(s) 🆕
     find(query, options) - Find documents 🔍
     findOne(query) - Find single document 👁️
@@ -205,7 +205,7 @@ async function modelExample() {
 
 ```javascript
 
-const db = await @alertino/bsondb.connect('filesdb');
+const db = await @axmat/bsondb.connect('filesdb');
 await db.fileStorage.init();
 
 // Store file
@@ -252,7 +252,7 @@ await collection.dropIndex('email');
 ```
 🌐 *REST API*
 ```Info
-When running as server, @alertino/bsondb provides REST API:
+When running as server, @axmat/bsondb provides REST API:
     POST /api/db/:dbName/connect - Connect to database 🔌
     POST /api/db/:dbName/collection/:collectionName - Create collection 🆕
     POST /api/db/:dbName/collection/:collectionName/insert - Insert documents ➕
@@ -284,4 +284,4 @@ When running as server, @alertino/bsondb provides REST API:
 ❓ Support
 
 
-This README provides comprehensive documentation for using @alertino/bsondb in various scenarios. The database is designed to be simple yet powerful, offering features similar to MongoDB with the convenience of file-based storage and built-in encryption. 🎉
+This README provides comprehensive documentation for using @axmat/bsondb in various scenarios. The database is designed to be simple yet powerful, offering features similar to MongoDB with the convenience of file-based storage and built-in encryption. 🎉
