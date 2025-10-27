@@ -1,0 +1,76 @@
+const fs = require('fs').promises;
+const path = require('path');
+
+async function fixEncryptionIssues() {
+    console.log('🔧 Fixing encryption issues...');
+    
+    const dataPath = './data';
+    
+    try {
+        // Проверяем существование директории
+        await fs.access(dataPath);
+    } catch (error) {
+        console.log('✅ No data directory found - nothing to fix.');
+        return;
+    }
+    
+    try {
+        // Получаем все базы данных
+        const databases = await fs.readdir(dataPath);
+        
+        for (const dbName of databases) {
+            const dbPath = path.join(dataPath, dbName);
+            const stat = await fs.stat(dbPath);
+            
+            if (stat.isDirectory()) {
+                console.log(`\n📁 Processing database: ${dbName}`);
+                
+                // Получаем все коллекции
+                const collections = await fs.readdir(dbPath);
+                
+                for (const collectionName of collections) {
+                    const collectionPath = path.join(dbPath, collectionName);
+                    const collectionStat = await fs.stat(collectionPath);
+                    
+                    if (collectionStat.isDirectory()) {
+                        console.log(`  📂 Processing collection: ${collectionName}`);
+                        
+                        // Удаляем все файлы индексов
+                        const files = await fs.readdir(collectionPath);
+                        const indexFiles = files.filter(f => f.startsWith('_index_') && f.endsWith('.bson'));
+                        
+                        for (const indexFile of indexFiles) {
+                            try {
+                                await fs.unlink(path.join(collectionPath, indexFile));
+                                console.log(`    ✅ Deleted: ${indexFile}`);
+                            } catch (error) {
+                                console.log(`    ❌ Could not delete ${indexFile}: ${error.message}`);
+                            }
+                        }
+                        
+                        // Удаляем основной индекс
+                        try {
+                            await fs.unlink(path.join(collectionPath, '_index.bson'));
+                            console.log(`    ✅ Deleted main index`);
+                        } catch (error) {
+                            // Игнорируем если файла нет
+                        }
+                    }
+                }
+            }
+        }
+        
+        console.log('\n🎉 All encryption issues fixed!');
+        console.log('💡 The server will recreate indexes automatically on next startup.');
+        
+    } catch (error) {
+        console.error('❌ Error fixing encryption issues:', error.message);
+    }
+}
+
+// Запускаем если файл вызван напрямую
+if (require.main === module) {
+    fixEncryptionIssues();
+}
+
+module.exports = fixEncryptionIssues;

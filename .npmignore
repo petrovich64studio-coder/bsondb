@@ -1,0 +1,43 @@
+# Тестовые файлы
+test/
+*.test.js
+*.spec.js
+
+# Документация и примеры
+docs/
+examples/
+demo/
+
+# Системные файлы
+.git/
+.gitignore
+.npmignore
+.travis.yml
+.github/
+
+# Файлы разработки
+.eslintrc.js
+.prettierrc
+jsconfig.json
+tsconfig.json
+
+# Логи и временные файлы
+*.log
+*.tmp
+.npm/
+.node_repl_history
+
+# Файлы IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Файлы ОС
+.DS_Store
+Thumbs.db
+
+# Пользовательские данные
+data/
+*.bson
+.env

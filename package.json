@@ -1,0 +1,58 @@
+{
+  "name": "@alertino/bsondb",
+  "version": "1.0.0",
+  "description": "A simple NoSQL DBMS based on BSON files. Suitable for small projects.",
+  "main": "index.js",
+  "bin": {
+    "bsondb": "./cli.js"
+  },
+  "scripts": {
+    "test": "node test/test.js",
+    "start": "node cli.js",
+    "prepublishOnly": "npm test",
+    "dev": "nodemon cli.js"
+  },
+  "keywords": [
+    "database",
+    "nosql",
+    "bson",
+    "encryption",
+    "file-storage",
+    "embedded",
+    "local-database"
+  ],
+  "author": "Vadim P Stolyarchuk <petrovich64studio@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petrovich64studio-coder/bsondb.git"
+  },
+  "homepage": "https://github.com/petrovich64studio-coder/bsondb#readme",
+  "bugs": {
+    "url": "https://github.com/petrovich64studio-coder/bsondb/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "index.js",
+    "cli.js",
+    "lib/**/*.js",
+    "LICENSE",
+    "README.MD"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "bson": "^4.7.2",
+    "commander": "^9.4.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "redis": "^4.6.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
